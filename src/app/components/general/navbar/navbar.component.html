@@ -1,3 +1,51 @@
-<p>
-  navbar works!
-</p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-0">
+  <div class="container px-2">
+    <button 
+      (click)="navCollapsed = !navCollapsed" 
+      class="btn btn-dark" 
+      type="button" 
+      data-target="#navbarSupportedContent" 
+      aria-controls="navbarSupportedContent" 
+      aria-expanded="false" 
+      aria-label="Toggle navigation"
+    ><i class="fa fa-bars"></i>
+    </button>
+    <a class="navbar-brand ml-2 mr-auto" routerLink="/">
+      <i class="fa fa-book"></i>
+    </a>
+  
+    <div class="collapse navbar-collapse" [ngbCollapse]="navCollapsed">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Read</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Write</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About?</a>
+        </li>
+      </ul>
+    </div>
+
+    <div *ngIf="navCollapsed; else inLineUserButtons" ngbDropdown class="d-inline-block">
+      <button class="btn btn-link text-white" id="dropdownBasic1" ngbDropdownToggle>
+        <i class="fa fa-user"></i>
+      </button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button class="dropdown-item">Sign In</button>
+        <button class="dropdown-item">Sign Up</button>
+      </div>
+    </div>
+    <ng-template #inLineUserButtons>
+      <div class="text-center">
+        <i class="fa fa-user text-white mr-2"></i>
+        <button class="btn btn-dark mr-2">Sign In</button>
+        <button class="btn btn-dark">Sign Out</button>
+      </div>
+    </ng-template>
+  </div>
+</nav>
