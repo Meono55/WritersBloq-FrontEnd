@@ -36,7 +36,7 @@
 
     <!-- User account controls -->
     <!-- If we are on mobile screen widths and navbar is collapsed, no controls will show -->
-    <div *ngIf="navCollapsed; else inLineUserButtons" ngbDropdown class="d-none d-sm-inline-block">
+    <div *ngIf="navCollapsed; else inLineUserButtons" ngbDropdown placement="bottom-right" class="d-none d-sm-inline-block">
       <button class="btn btn-link text-white" id="dropdownBasic1" ngbDropdownToggle>
         <i class="fa fa-user"></i>
       </button>
