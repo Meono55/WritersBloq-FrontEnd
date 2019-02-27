@@ -8,6 +8,7 @@ import { NavbarComponent } from './components/general/navbar/navbar.component';
 import { FooterComponent } from './components/general/footer/footer.component';
 import { HomeBaseComponent } from './components/home/home-base/home-base.component';
 import { TopFilterComponent } from './components/general/top-filter/top-filter.component';
+import { StoryCardComponent } from './components/general/story-card/story-card.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { TopFilterComponent } from './components/general/top-filter/top-filter.c
     NavbarComponent,
     FooterComponent,
     HomeBaseComponent,
-    TopFilterComponent
+    TopFilterComponent,
+    StoryCardComponent
   ],
   imports: [
     BrowserModule,
