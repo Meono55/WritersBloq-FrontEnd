@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark px-0 shadow">
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-secondary px-0 shadow">
   <div class="container px-2">
     <!-- Mobile bars button -->
     <button 
@@ -12,8 +12,8 @@
     ><i class="fa fa-bars"></i>
     </button>
     <!-- Logo -->
-    <a class="navbar-brand ml-3 mr-auto" routerLink="/">
-      <i class="fa fa-book"></i>
+    <a class="navbar-brand ml-3" routerLink="/">
+      <img src="../../../../assets/images/logo/favicon.ico" class="img-fluid" alt="Logo">
     </a>
   
     <!-- General links -->
@@ -40,8 +40,9 @@
       <button class="btn btn-link text-white" id="dropdownBasic1" ngbDropdownToggle>
         <i class="fa fa-user"></i>
       </button>
-      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+      <div ngbDropdownMenu class="text-center" aria-labelledby="dropdownBasic1">
         <button class="dropdown-item">Sign In</button>
+        <hr class="my-1 w-75">
         <button class="dropdown-item">Sign Up</button>
       </div>
     </div>
