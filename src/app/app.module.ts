@@ -9,6 +9,7 @@ import { FooterComponent } from './components/general/footer/footer.component';
 import { HomeBaseComponent } from './components/home/home-base/home-base.component';
 import { TopFilterComponent } from './components/general/top-filter/top-filter.component';
 import { StoryCardComponent } from './components/general/story-card/story-card.component';
+import { LoginBaseComponent } from './components/login/login-base/login-base.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { StoryCardComponent } from './components/general/story-card/story-card.c
     FooterComponent,
     HomeBaseComponent,
     TopFilterComponent,
-    StoryCardComponent
+    StoryCardComponent,
+    LoginBaseComponent
   ],
   imports: [
     BrowserModule,
