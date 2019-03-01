@@ -1,0 +1,21 @@
+.popup-container {
+    top: 7vh;
+    z-index: 1031;
+}
+
+.toast {
+    opacity: 100 !important;
+    background-color: rgba(255,255,255,1.0) !important;
+}
+
+.error-msg{
+    background-color: #EF5350 !important;
+}
+.success-msg{
+    background-color: #43a047 !important;
+
+}
+
+// .toast-header{
+//     background-color: rgba(255,255,255,1.0) !important;
+// }

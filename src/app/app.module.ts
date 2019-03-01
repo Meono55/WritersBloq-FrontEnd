@@ -10,6 +10,10 @@ import { HomeBaseComponent } from './components/home/home-base/home-base.compone
 import { TopFilterComponent } from './components/general/top-filter/top-filter.component';
 import { StoryCardComponent } from './components/general/story-card/story-card.component';
 import { LoginBaseComponent } from './components/login/login-base/login-base.component';
+import { RegisterBaseComponent } from './components/register/register-base/register-base.component';
+import { FormsModule } from '@angular/forms';
+import { PopupMsgComponent } from './components/general/popup-msg/popup-msg.component';
+import { PopupMsgService } from './services/popup-msg.service';
 
 @NgModule({
   declarations: [
@@ -19,14 +23,17 @@ import { LoginBaseComponent } from './components/login/login-base/login-base.com
     HomeBaseComponent,
     TopFilterComponent,
     StoryCardComponent,
-    LoginBaseComponent
+    LoginBaseComponent,
+    RegisterBaseComponent,
+    PopupMsgComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [PopupMsgService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
