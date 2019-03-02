@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +15,7 @@ import { RegisterBaseComponent } from './components/register/register-base/regis
 import { FormsModule } from '@angular/forms';
 import { PopupMsgComponent } from './components/general/popup-msg/popup-msg.component';
 import { PopupMsgService } from './services/popup-msg.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -31,9 +33,10 @@ import { PopupMsgService } from './services/popup-msg.service';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [PopupMsgService],
+  providers: [PopupMsgService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

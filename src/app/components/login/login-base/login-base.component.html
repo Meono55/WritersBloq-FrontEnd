@@ -6,7 +6,7 @@
   </div>
   <div class="row">
     <div class="col-md-6 mx-auto">
-      <form>
+      <form (ngSubmit)="login()">
         <!-- Email Address input field -->
         <div class="form-group">
           <label for="email">Email Address</label>
@@ -17,7 +17,7 @@
               </span>
             </div>
             <input type="text" class="form-control" name="email" placeholder="Email" aria-label="Email"
-              aria-describedby="basic-addon1">
+              aria-describedby="basic-addon1" [(ngModel)]="email">
           </div>
         </div>
 
@@ -31,7 +31,7 @@
               </span>
             </div>
             <input type="text" class="form-control" name="password" placeholder="Password" aria-label="Password"
-              aria-describedby="basic-addon1">
+              aria-describedby="basic-addon1" [(ngModel)]="password">
           </div>
         </div>
 

@@ -6,7 +6,7 @@
   </div>
   <div class="row">
     <div class="col-md-6 mx-auto mb-3">
-      <form>
+      <form (ngSubmit)="register()">
         <!-- Date of birth input field -->
         <div class="form-group">
           <label for="dob">Date of Birth</label>
@@ -33,7 +33,7 @@
               </span>
             </div>
             <input type="text" class="form-control" name="fName" placeholder="First Name" [disabled]="isDisabled"
-              aria-label="First Name">
+              aria-label="First Name" [(ngModel)]="user.firstName">
           </div>
         </div>
         <!-- Last Name input field -->
@@ -46,7 +46,7 @@
               </span>
             </div>
             <input type="text" class="form-control" name="lName" placeholder="Last Name" [disabled]="isDisabled"
-              aria-label="First Name">
+              aria-label="Last Name" [(ngModel)]="user.lastName">
           </div>
         </div>
         <!-- Email Address input field -->
@@ -59,7 +59,7 @@
               </span>
             </div>
             <input type="text" class="form-control" name="email" placeholder="Email" [disabled]="isDisabled" aria-label="Email"
-              aria-describedby="basic-addon1">
+              aria-describedby="basic-addon1" [(ngModel)]="user.email">
           </div>
         </div>
 
@@ -73,7 +73,7 @@
               </span>
             </div>
             <input type="text" class="form-control" name="password" placeholder="Password" [disabled]="isDisabled"
-              aria-label="Password" aria-describedby="basic-addon1">
+              aria-label="Password" aria-describedby="basic-addon1" [(ngModel)]="user.password">
           </div>
         </div>
         <!-- Password input field -->
@@ -86,7 +86,7 @@
               </span>
             </div>
             <input type="text" class="form-control" name="cpassword" placeholder="Confirm Password" [disabled]="isDisabled"
-              aria-label="Confirm Password" aria-describedby="basic-addon1">
+              aria-label="Confirm Password" aria-describedby="basic-addon1" [(ngModel)]="password2">
           </div>
         </div>
 
