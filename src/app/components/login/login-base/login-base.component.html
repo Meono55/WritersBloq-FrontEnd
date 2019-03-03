@@ -30,14 +30,17 @@
                 <i class="fa fa-lock text-primary"></i>
               </span>
             </div>
-            <input type="text" class="form-control" name="password" placeholder="Password" aria-label="Password"
+            <input type="password" class="form-control" name="password" placeholder="Password" aria-label="Password"
               aria-describedby="basic-addon1" [(ngModel)]="password">
           </div>
         </div>
 
         <!-- Confirm login button -->
         <div class="w-50 pt-2 mx-auto">
-          <input type="submit" value="Login" class="btn btn-primary btn-lg btn-block">
+          <button type="submit" [class.disabled]="loading" class="btn btn-primary btn-lg btn-block">
+            <span *ngIf="!loading; else spinner">Login</span>
+            <ng-template #spinner><i class="fa fa-circle-notch fa-spin"></i></ng-template>
+          </button>
         </div>
       </form>
     </div>

@@ -16,10 +16,22 @@
                 <i class="fa fa-calendar-alt text-primary"></i>
               </span>
             </div>
-            <input (click)="d.toggle()" type="text" name="dob" class="form-control" ngbDatepicker #d="ngbDatepicker"
-              [(ngModel)]="date" />
+            <input 
+              (click)="d.toggle()" 
+              type="text" 
+              name="dob" 
+              class="form-control" 
+              #d="ngbDatepicker"
+              [(ngModel)]="date" 
+              [disabled]="!isDisabled"
+              ngbDatepicker>
             <div class="input-group-append">
-              <button (click)="validateDate()" class="btn btn-outline-primary"><i class="fa fa-check"></i></button>
+              <button 
+                type="button" 
+                (click)="validateDate()" 
+                class="btn btn-outline-primary"
+                [disabled]="!isDisabled"
+              ><i class="fa fa-check"></i></button>
             </div>
           </div>
         </div>
@@ -72,7 +84,7 @@
                 <i class="fa fa-lock text-primary"></i>
               </span>
             </div>
-            <input type="text" class="form-control" name="password" placeholder="Password" [disabled]="isDisabled"
+            <input type="password" class="form-control" name="password" placeholder="Password" [disabled]="isDisabled"
               aria-label="Password" aria-describedby="basic-addon1" [(ngModel)]="user.password">
           </div>
         </div>
@@ -85,14 +97,17 @@
                 <i class="fa fa-lock text-primary"></i>
               </span>
             </div>
-            <input type="text" class="form-control" name="cpassword" placeholder="Confirm Password" [disabled]="isDisabled"
+            <input type="password" class="form-control" name="cpassword" placeholder="Confirm Password" [disabled]="isDisabled"
               aria-label="Confirm Password" aria-describedby="basic-addon1" [(ngModel)]="password2">
           </div>
         </div>
 
         <!-- Confirm Register button -->
         <div class="w-50 py-2 mx-auto">
-          <input type="submit" value="Register" class="btn btn-primary btn-lg btn-block">
+          <button type="submit" [class.disabled]="loading" class="btn btn-primary btn-lg btn-block">
+            <span *ngIf="!loading; else spinner">Register</span>
+            <ng-template #spinner><i class="fa fa-circle-notch fa-spin"></i></ng-template>
+          </button>
         </div>
       </form>
     </div>

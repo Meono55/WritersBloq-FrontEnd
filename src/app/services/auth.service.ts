@@ -14,12 +14,21 @@ export class AuthService {
     private http: HttpClient
   ) { }
 
+
+  /**
+   * Gets the currently logged in user from the API
+   */
+  getLoggedInUser(): Observable<User> {
+    return this.http.get(`${environment.p2ApiUrl}/auth`, {withCredentials: true})
+  }
+
+
   /**
    * Calls POST action on the /users api end point to create a new user
    * @param user to be created
    */
   register(user): Observable<User> {
-    return this.http.post<User>(`${environment.p2ApiUrl}/users`, user)
+    return this.http.post<User>(`${environment.p2ApiUrl}/users`, user, {withCredentials: true})
   }
 
 
@@ -29,6 +38,14 @@ export class AuthService {
    * @param password portion of the credentials
    */
   login(email, password): Observable<User> {
-    return this.http.post<User>(`${environment.p2ApiUrl}/auth`, {email, password})
+    return this.http.post<User>(`${environment.p2ApiUrl}/auth`, {email, password}, {withCredentials: true})
+  }
+
+
+  /**
+   * Calls a DELETE method to delete the current user's token from the database which means to sign out
+   */
+  logout(): Observable<any> {
+    return this.http.delete(`${environment.p2ApiUrl}/auth`, {withCredentials: true})
   }
 }

@@ -3,6 +3,8 @@ import { PopupMsgService } from 'src/app/services/popup-msg.service';
 import { AuthService } from '../../../services/auth.service';
 import User from '../../../models/User.model';
 import { Subscription } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-base',
@@ -10,8 +12,8 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./register-base.component.scss']
 })
 export class RegisterBaseComponent implements OnInit, OnDestroy {
-
-  date
+  loading = false
+  date: any
   isDisabled: boolean = true
 
   user: User = {}
@@ -21,12 +23,18 @@ export class RegisterBaseComponent implements OnInit, OnDestroy {
 
 
   constructor(
-    private popupService: PopupMsgService,
-    private auth: AuthService
+    private popup: PopupMsgService,
+    private auth: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {
+    this.beforeEnter()
     document.title = 'Register | WrBq'
+  }
+
+  beforeEnter() {
+    if (this.auth.currentUser) this.router.navigateByUrl('/')
   }
 
   validateDate() {
@@ -35,24 +43,32 @@ export class RegisterBaseComponent implements OnInit, OnDestroy {
       let age = 13
       let now = new Date()
       now.setFullYear(now.getFullYear() - age)
+      this.user.dob = dob.valueOf()
       if ((now.valueOf() - dob.valueOf()) < 0) {
-        this.popupService.showMsg(true, 'You must be above the age of 13 to register!')
+        this.popup.showMsg(true, 'You must be above the age of 13 to register!')
       } else {
         this.isDisabled = false;
       }
     } else{
-      this.popupService.showMsg(true, 'Please choose a date!')
+      this.popup.showMsg(true, 'Please choose a date!')
     }
   }
 
   register() {
+    this.loading = true
     this.registerSub = this.auth.register(this.user).subscribe(user => {
       this.auth.currentUser = user
+      this.popup.showMsg(false, 'Registeration complete!')
+      this.loading = false
+      this.router.navigateByUrl('/')
+    }, (err: HttpErrorResponse) => {
+      this.popup.showMsg(true, err.error)
+      this.loading = false
     })
   }
 
   ngOnDestroy() {
-    this.registerSub.unsubscribe()
+    if (this.registerSub) this.registerSub.unsubscribe()
   }
 
 }

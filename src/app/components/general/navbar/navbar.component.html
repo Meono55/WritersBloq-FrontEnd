@@ -12,7 +12,7 @@
     ><i class="fa fa-bars"></i>
     </button>
     <!-- Logo -->
-    <a class="navbar-brand ml-3" routerLink="/">
+    <a class="navbar-brand ml-3 mr-auto" routerLink="/">
       <img src="../../../../assets/images/logo/WrBq-Logo30.png" class="img-fluid" alt="Logo">
     </a>
   
@@ -35,27 +35,36 @@
     </div>
 
     <!-- User account controls -->
-    <!-- If we are on mobile screen widths and navbar is collapsed, no controls will show -->
-    <div *ngIf="navCollapsed; else inLineUserButtons" ngbDropdown placement="bottom-right" class="d-none d-lg-inline-block">
-      <button class="btn btn-link text-white" id="dropdownBasic1" ngbDropdownToggle>
-        <i class="fa fa-user"></i>
-      </button>
-      <div ngbDropdownMenu class="text-center" aria-labelledby="dropdownBasic1">
-        <button routerLink="/login" class="dropdown-item">Login</button>
-        <hr class="my-1 w-75">
-        <button routerLink="/register" class="dropdown-item">Register</button>
-      </div>
+    <div *ngIf="navCollapsed; else uncollapsed">
+      <a *ngIf="!auth.currentUser; else userLoggedIn" routerLink="/login" class="btn btn-primary">Login</a>
+      <ng-template #userLoggedIn>
+        <button class="btn btn-danger">Logout</button>
+      </ng-template>
     </div>
-    <!-- ELSE: Show in-line controls in the navbar dropdown -->
-    <ng-template #inLineUserButtons>
-      <div class="w-100">
-        <hr class="w-50 my-0">
-      </div>
-      <!-- <div class="w-100 text-center text-light pt-2">User</div> -->
-      <div class="d-flex flex-row justify-content-center w-100 pb-2">
-        <button routerLink="/login" class="btn btn-dark mr-2">Login</button>
-        <button routerLink="/register" class="btn btn-dark">Register</button>
+    <ng-template #uncollapsed>
+      <div class="d-flex flex-row w-100">
+        <a *ngIf="!auth.currentUser; else userLoggedIn" routerLink="/login" class="btn btn-primary d-block mx-auto">Login</a>
+        <ng-template #userLoggedIn>
+          <button (click)="open(content)" class="btn btn-danger d-block mx-auto">Logout</button>
+        </ng-template>
       </div>
     </ng-template>
+
   </div>
 </nav>
+
+<ng-template #content let-modal>
+  <div class="modal-header border-light pb-2">
+    <h4 class="w-100 pl-4 text-center" id="modal-basic-title">Logout</h4>
+    <button class="close" aria-label="Close" (click)="modal.dismiss()">
+      <i class="fa fa-times mt-1"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p class="text-center">Are you sure you want to logout?</p>
+    <button [class]="(loading ? 'disabled ' : '') + 'btn btn-outline-danger d-block w-50 mx-auto'" (click)="logout(); modal.dismiss()">
+      <div *ngIf="!loading; else spinner"><span>Logout</span><i class="fa fa-sign-out-alt ml-2"></i></div>
+      <ng-template #spinner><i class="fa fa-spinner fa-spin"></i></ng-template>
+    </button>
+  </div>
+</ng-template>
