@@ -28,12 +28,12 @@ export class NavbarComponent implements OnInit {
   }
 
   logout() {
-    // this.loading = true
-    // this.authService.logout().subscribe(res => {
-    //   this.authService.currentUser = undefined
-    //   this.loading = false
-    //   this.router.navigateByUrl('/')
-    // })
+    this.loading = true
+    this.authService.logout().subscribe(res => {
+      this.authService.currentUser = undefined
+      this.loading = false
+      this.router.navigateByUrl('/')
+    })
   }
 
 }

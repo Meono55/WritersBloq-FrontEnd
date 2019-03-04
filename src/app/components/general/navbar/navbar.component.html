@@ -38,13 +38,13 @@
     <div *ngIf="navCollapsed; else uncollapsed">
       <a *ngIf="!auth.currentUser; else userLoggedIn" routerLink="/login" class="btn btn-primary">Login</a>
       <ng-template #userLoggedIn>
-        <button class="btn btn-danger">Logout</button>
+        <button (click)="open(content)" class="btn btn-danger">Logout</button>
       </ng-template>
     </div>
     <ng-template #uncollapsed>
       <div class="d-flex flex-row w-100">
-        <a *ngIf="!auth.currentUser; else userLoggedIn" routerLink="/login" class="btn btn-primary d-block mx-auto">Login</a>
-        <ng-template #userLoggedIn>
+        <a *ngIf="!auth.currentUser; else userLoggedInNav" routerLink="/login" class="btn btn-primary d-block mx-auto">Login</a>
+        <ng-template #userLoggedInNav>
           <button (click)="open(content)" class="btn btn-danger d-block mx-auto">Logout</button>
         </ng-template>
       </div>
