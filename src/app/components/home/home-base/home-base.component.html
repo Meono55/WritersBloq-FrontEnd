@@ -13,7 +13,35 @@
     <div class="row">
       <div class="col-md-8 mx-auto">
         <div class="input-group shadow">
-          <input type="text" name="search" id="homeSearch" class="form-control" placeholder="Search for stories">
+
+          <!-- Choose a search type -->
+          <div class="input-group-prepend">
+            <div ngbDropdown>
+              <button class="btn btn-primary rounded-fix" id="searchTypes" ngbDropdownToggle>{{storyService.searchType}}</button>
+              <div ngbDropdownMenu aria-labelledby="searchTypes" class="w-100">
+                <button 
+                  *ngFor="let type of storyService.possibleTypes"
+                  (click)="storyService.changeSearchType(type)" 
+                  class="dropdown-item"
+                  [disabled]="type == storyService.searchType"
+                >{{type}}</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Enter search query -->
+          <select *ngIf="storyService.searchType != 'Title'; else titleSearch" class="form-control">
+            <option selected>Search by {{storyService.searchType}}</option>
+            <option>Fantasy</option>
+            <option>Horror</option>
+            <option>Mystery</option>
+            <option>Thriller</option>
+          </select>
+          <ng-template #titleSearch>
+            <input type="text" name="search" class="form-control" [placeholder]="'Search by ' + storyService.searchType">
+          </ng-template>
+
+          <!-- Execute the search -->
           <div class="input-group-append">
             <button class="btn btn-primary">
               <i class="fa fa-search"></i>

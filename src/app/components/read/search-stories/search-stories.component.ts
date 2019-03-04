@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { StoryService } from '../../../services/story.service';
 
 @Component({
-  selector: 'app-home-base',
-  templateUrl: './home-base.component.html',
-  styleUrls: ['./home-base.component.scss']
+  selector: 'app-search-stories',
+  templateUrl: './search-stories.component.html',
+  styleUrls: ['./search-stories.component.scss']
 })
-export class HomeBaseComponent implements OnInit {
+export class SearchStoriesComponent implements OnInit {
   storyService: StoryService
 
   constructor(
@@ -14,11 +14,8 @@ export class HomeBaseComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    document.title = 'Search | WrBq'
     this.storyService = this.storys
-  }
-
-  search() {
-    // TODO
   }
 
 }

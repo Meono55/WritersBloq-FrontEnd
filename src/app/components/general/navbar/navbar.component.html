@@ -14,21 +14,22 @@
     <!-- Logo -->
     <a class="navbar-brand ml-3 mr-auto" routerLink="/">
       <img src="../../../../assets/images/logo/WrBq-Logo30.png" class="img-fluid" alt="Logo">
+      <span class="ml-2">WritersBloq</span>
     </a>
   
     <!-- General links -->
     <div class="collapse navbar-collapse" [ngbCollapse]="navCollapsed">
-      <ul class="navbar-nav mr-auto text-center">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      <ul class="navbar-nav ml-2 mr-auto text-center">
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
+          <a routerLink="/" class="nav-link">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Read</a>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
+          <a routerLink="/read" class="nav-link">Read</a>
         </li>
-        <li class="nav-item">
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
           <a class="nav-link" href="#">Write</a>
         </li>
-        <li class="nav-item">
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-item">
           <a class="nav-link" href="#">About?</a>
         </li>
       </ul>
@@ -53,6 +54,7 @@
   </div>
 </nav>
 
+<!-- Logout modal -->
 <ng-template #content let-modal>
   <div class="modal-header border-light pb-2">
     <h4 class="w-100 pl-4 text-center" id="modal-basic-title">Logout</h4>
@@ -63,8 +65,8 @@
   <div class="modal-body">
     <p class="text-center">Are you sure you want to logout?</p>
     <button [class]="(loading ? 'disabled ' : '') + 'btn btn-outline-danger d-block w-50 mx-auto'" (click)="logout(); modal.dismiss()">
-      <div *ngIf="!loading; else spinner"><span>Logout</span><i class="fa fa-sign-out-alt ml-2"></i></div>
-      <ng-template #spinner><i class="fa fa-spinner fa-spin"></i></ng-template>
+      <div *ngIf="!loading; else spinner">Logout</div>
+      <ng-template #spinner><i class="fa fa-circle-notch fa-spin"></i></ng-template>
     </button>
   </div>
 </ng-template>

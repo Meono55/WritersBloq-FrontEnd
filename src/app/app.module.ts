@@ -16,6 +16,9 @@ import { FormsModule } from '@angular/forms';
 import { PopupMsgComponent } from './components/general/popup-msg/popup-msg.component';
 import { PopupMsgService } from './services/popup-msg.service';
 import { AuthService } from './services/auth.service';
+import { StoryService } from './services/story.service';
+import { ReadBaseComponent } from './components/read/read-base/read-base.component';
+import { SearchStoriesComponent } from './components/read/search-stories/search-stories.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,9 @@ import { AuthService } from './services/auth.service';
     StoryCardComponent,
     LoginBaseComponent,
     RegisterBaseComponent,
-    PopupMsgComponent
+    PopupMsgComponent,
+    SearchStoriesComponent,
+    ReadBaseComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +41,7 @@ import { AuthService } from './services/auth.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [PopupMsgService, AuthService],
+  providers: [PopupMsgService, AuthService, StoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
