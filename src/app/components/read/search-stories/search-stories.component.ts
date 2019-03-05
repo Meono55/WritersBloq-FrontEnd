@@ -8,6 +8,8 @@ import { StoryService } from '../../../services/story.service';
 })
 export class SearchStoriesComponent implements OnInit {
   storyService: StoryService
+  pages: Array<number> = [0, 1, 2, 3, 4, 5, 6]
+  currentPage: number = this.pages[0]
 
   constructor(
     private storys: StoryService
