@@ -17,9 +17,8 @@ import { PopupMsgComponent } from './components/general/popup-msg/popup-msg.comp
 import { PopupMsgService } from './services/popup-msg.service';
 import { AuthService } from './services/auth.service';
 import { StoryService } from './services/story.service';
-import { SearchBaseComponent } from './components/search/search-base/search-base.component';
-import { SearchPageComponent } from './components/search/search-page/search-page.component';
 import { SearchStoriesComponent } from './components/read/search-stories/search-stories.component';
+import { StoryViewComponent } from './components/read/story-view/story-view.component';
 
 @NgModule({
   declarations: [
@@ -32,9 +31,8 @@ import { SearchStoriesComponent } from './components/read/search-stories/search-
     LoginBaseComponent,
     RegisterBaseComponent,
     PopupMsgComponent,
-    SearchBaseComponent,
-    SearchPageComponent,
-    SearchStoriesComponent
+    SearchStoriesComponent,
+    StoryViewComponent
   ],
   imports: [
     BrowserModule,
