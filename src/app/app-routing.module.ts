@@ -10,6 +10,7 @@ import { MyStoriesComponent } from './components/write/my-stories/my-stories.com
 import { NewStoryComponent } from './components/write/new-story/new-story.component';
 import { ManageStoryComponent } from './components/write/manage-story/manage-story.component';
 import { StoryBaseComponent } from './components/write/story-base/story-base.component';
+import { ReadChapterComponent } from './components/read/read-chapter/read-chapter.component';
 
 const routes: Routes = [
   {path: '', component: HomeBaseComponent},
@@ -18,11 +19,11 @@ const routes: Routes = [
   // {path: 'dashboard'},
   {path: 'stories', component: SearchStoriesComponent},
   {path: 'stories/:storyId', component: StoryViewComponent},
-  // {path: 'stories/:storyId/chapters', redirectTo: '/stories/:storyId'},
-  // {path: 'stories/:storyId/chapters/:chapterId'}, 
+  {path: 'stories/:storyId/chapters/:chapterId', component: ReadChapterComponent},
+  {path: 'stories/:storyId/chapters', redirectTo: '/stories/:storyId'},
   {
-    path: 'my-stories', 
-    component: WriteBaseComponent,
+    path: 'my-stories',
+    component: WriteBaseComponent, 
     children: [
       {path: '', component: MyStoriesComponent},
       {path: 'new', component: NewStoryComponent},
