@@ -19,6 +19,11 @@ import { AuthService } from './services/auth.service';
 import { StoryService } from './services/story.service';
 import { SearchStoriesComponent } from './components/read/search-stories/search-stories.component';
 import { StoryViewComponent } from './components/read/story-view/story-view.component';
+import { MyStoriesComponent } from './components/write/my-stories/my-stories.component';
+import { WriteBaseComponent } from './components/write/write-base/write-base.component';
+import { NewStoryComponent } from './components/write/new-story/new-story.component';
+import { MyStoryCardComponent } from './components/general/my-story-card/my-story-card.component';
+import { ManageStoryComponent } from './components/write/manage-story/manage-story.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +37,12 @@ import { StoryViewComponent } from './components/read/story-view/story-view.comp
     RegisterBaseComponent,
     PopupMsgComponent,
     SearchStoriesComponent,
-    StoryViewComponent
+    StoryViewComponent,
+    MyStoriesComponent,
+    WriteBaseComponent,
+    NewStoryComponent,
+    MyStoryCardComponent,
+    ManageStoryComponent
   ],
   imports: [
     BrowserModule,

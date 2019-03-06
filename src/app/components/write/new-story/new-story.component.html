@@ -1,0 +1,40 @@
+<div class="container pt-4">
+
+  <!-- Title -->
+  <div class="row text-center">
+    <h2 class="mb-0 text-center w-100">Create New Story</h2>
+    <hr class="mt-4 mb-3 bg-primary w-50">
+  </div>
+
+
+  <div class="row pb-2">
+    <div class="col-md-7 mx-auto">
+      <form>
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" name="title" class="form-control" placeholder="Enter Story's Title">
+        </div>
+        <div class="form-group">
+          <label for="title">Genre</label>
+          <select class="form-control" name="genre">
+            <option selected>Choose A Genre..</option>
+            <option *ngFor="let g of genres" [value]="g.toLowerCase()">{{g.toLowerCase()}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="tags">Tags</label>
+          <input type="text" name="tags" class="form-control" placeholder="Seperate tags by commas">
+          <small id="tagsHelp" class="form-text text-muted">Enter tags seperated by commas</small>
+        </div>
+        <div class="form-group">
+          <label for="summary">Summary</label>
+          <textarea class="form-control" name="summary" rows="3"></textarea>
+        </div>
+        <div class="w-100">
+          <button type="submit" class="btn btn-primary btn-lg d-block mx-auto">Create</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>

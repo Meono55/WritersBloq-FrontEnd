@@ -5,6 +5,9 @@ import { LoginBaseComponent } from './components/login/login-base/login-base.com
 import { RegisterBaseComponent } from './components/register/register-base/register-base.component';
 import { SearchStoriesComponent } from './components/read/search-stories/search-stories.component';
 import { StoryViewComponent } from './components/read/story-view/story-view.component';
+import { WriteBaseComponent } from './components/write/write-base/write-base.component';
+import { MyStoriesComponent } from './components/write/my-stories/my-stories.component';
+import { NewStoryComponent } from './components/write/new-story/new-story.component';
 
 const routes: Routes = [
   {path: '', component: HomeBaseComponent},
@@ -15,23 +18,24 @@ const routes: Routes = [
   {path: 'stories/:storyId', component: StoryViewComponent},
   // {path: 'stories/:storyId/chapters', redirectTo: '/stories/:storyId'},
   // {path: 'stories/:storyId/chapters/:chapterId'}, 
-  // {
-  //   path: 'my-stories', 
-  //   children: [
-  //     {path: ''},
-  //     {path: 'new'},
-  //     {
-  //       path: ':storyId',
-  //       children: [
-  //         {path: ''},
-  //         {path: 'chapters', redirectTo: '/my-stories/:storyId'},
-  //         {
-  //           path: ':chapterId'
-  //         }
-  //       ]
-  //     }
-  //   ]
-  // },
+  {
+    path: 'my-stories', 
+    component: WriteBaseComponent,
+    children: [
+      {path: '', component: MyStoriesComponent},
+      {path: 'new', component: NewStoryComponent},
+      // {
+      //   path: ':storyId',
+      //   children: [
+      //     {path: ''},
+      //     {path: 'chapters', redirectTo: '/my-stories/:storyId'},
+      //     {
+      //       path: ':chapterId'
+      //     }
+      //   ]
+      // }
+    ]
+  },
   {path: '**', redirectTo: '/'}
 ];
 
