@@ -8,6 +8,8 @@ import { StoryViewComponent } from './components/read/story-view/story-view.comp
 import { WriteBaseComponent } from './components/write/write-base/write-base.component';
 import { MyStoriesComponent } from './components/write/my-stories/my-stories.component';
 import { NewStoryComponent } from './components/write/new-story/new-story.component';
+import { ManageStoryComponent } from './components/write/manage-story/manage-story.component';
+import { StoryBaseComponent } from './components/write/story-base/story-base.component';
 
 const routes: Routes = [
   {path: '', component: HomeBaseComponent},
@@ -24,16 +26,17 @@ const routes: Routes = [
     children: [
       {path: '', component: MyStoriesComponent},
       {path: 'new', component: NewStoryComponent},
-      // {
-      //   path: ':storyId',
-      //   children: [
-      //     {path: ''},
-      //     {path: 'chapters', redirectTo: '/my-stories/:storyId'},
-      //     {
-      //       path: ':chapterId'
-      //     }
-      //   ]
-      // }
+      {
+        path: ':storyId',
+        component: StoryBaseComponent,
+        children: [
+          {path: '', component: ManageStoryComponent}
+          // {
+          //   path: ':chapterId'
+          // },
+          // {path: 'chapters', redirectTo: '/my-stories/:storyId'}
+        ]
+      }
     ]
   },
   {path: '**', redirectTo: '/'}

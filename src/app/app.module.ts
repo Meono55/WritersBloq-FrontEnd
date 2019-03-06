@@ -24,6 +24,7 @@ import { WriteBaseComponent } from './components/write/write-base/write-base.com
 import { NewStoryComponent } from './components/write/new-story/new-story.component';
 import { MyStoryCardComponent } from './components/general/my-story-card/my-story-card.component';
 import { ManageStoryComponent } from './components/write/manage-story/manage-story.component';
+import { StoryBaseComponent } from './components/write/story-base/story-base.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ManageStoryComponent } from './components/write/manage-story/manage-sto
     WriteBaseComponent,
     NewStoryComponent,
     MyStoryCardComponent,
-    ManageStoryComponent
+    ManageStoryComponent,
+    StoryBaseComponent
   ],
   imports: [
     BrowserModule,
