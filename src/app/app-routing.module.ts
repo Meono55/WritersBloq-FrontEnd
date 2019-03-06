@@ -5,6 +5,7 @@ import { LoginBaseComponent } from './components/login/login-base/login-base.com
 import { RegisterBaseComponent } from './components/register/register-base/register-base.component';
 import { SearchStoriesComponent } from './components/read/search-stories/search-stories.component';
 import { StoryViewComponent } from './components/read/story-view/story-view.component';
+import { ReadChapterComponent } from './components/read/read-chapter/read-chapter.component';
 
 const routes: Routes = [
   {path: '', component: HomeBaseComponent},
@@ -13,8 +14,9 @@ const routes: Routes = [
   // {path: 'dashboard'},
   {path: 'stories', component: SearchStoriesComponent},
   {path: 'stories/:storyId', component: StoryViewComponent},
-  // {path: 'stories/:storyId/chapters', redirectTo: '/stories/:storyId'},
-  // {path: 'stories/:storyId/chapters/:chapterId'}, 
+  {path: 'stories/:storyId/chapters/:chapterId', component: ReadChapterComponent},
+  {path: 'stories/:storyId/chapters', redirectTo: '/stories/:storyId'},
+
   // {
   //   path: 'my-stories', 
   //   children: [

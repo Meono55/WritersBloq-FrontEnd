@@ -19,6 +19,7 @@ import { AuthService } from './services/auth.service';
 import { StoryService } from './services/story.service';
 import { SearchStoriesComponent } from './components/read/search-stories/search-stories.component';
 import { StoryViewComponent } from './components/read/story-view/story-view.component';
+import { ReadChapterComponent } from './components/read/read-chapter/read-chapter.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { StoryViewComponent } from './components/read/story-view/story-view.comp
     RegisterBaseComponent,
     PopupMsgComponent,
     SearchStoriesComponent,
-    StoryViewComponent
+    StoryViewComponent,
+    ReadChapterComponent
   ],
   imports: [
     BrowserModule,
