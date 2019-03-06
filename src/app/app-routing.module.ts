@@ -5,41 +5,26 @@ import { LoginBaseComponent } from './components/login/login-base/login-base.com
 import { RegisterBaseComponent } from './components/register/register-base/register-base.component';
 import { SearchStoriesComponent } from './components/read/search-stories/search-stories.component';
 import { StoryViewComponent } from './components/read/story-view/story-view.component';
-import { WriteBaseComponent } from './components/write/write-base/write-base.component';
 import { MyStoriesComponent } from './components/write/my-stories/my-stories.component';
 import { NewStoryComponent } from './components/write/new-story/new-story.component';
 import { ManageStoryComponent } from './components/write/manage-story/manage-story.component';
-import { StoryBaseComponent } from './components/write/story-base/story-base.component';
 import { ReadChapterComponent } from './components/read/read-chapter/read-chapter.component';
+import { NewChapterComponent } from './components/write/new-chapter/new-chapter.component';
 
 const routes: Routes = [
   {path: '', component: HomeBaseComponent},
   {path: 'login', component: LoginBaseComponent},
   {path: 'register', component: RegisterBaseComponent},
-  // {path: 'dashboard'},
   {path: 'stories', component: SearchStoriesComponent},
   {path: 'stories/:storyId', component: StoryViewComponent},
   {path: 'stories/:storyId/chapters/:chapterId', component: ReadChapterComponent},
   {path: 'stories/:storyId/chapters', redirectTo: '/stories/:storyId'},
-  {
-    path: 'my-stories',
-    component: WriteBaseComponent, 
-    children: [
-      {path: '', component: MyStoriesComponent},
-      {path: 'new', component: NewStoryComponent},
-      {
-        path: ':storyId',
-        component: StoryBaseComponent,
-        children: [
-          {path: '', component: ManageStoryComponent}
-          // {
-          //   path: ':chapterId'
-          // },
-          // {path: 'chapters', redirectTo: '/my-stories/:storyId'}
-        ]
-      }
-    ]
-  },
+  {path: 'my-stories', component: MyStoriesComponent},
+  {path: 'my-stories/new', component: NewStoryComponent},
+  {path: 'my-stories/:storyId', component: ManageStoryComponent},
+  {path: 'my-stories/:storyId/chapters/new', component: NewChapterComponent},
+  // {path: 'my-stories/:storyId/chapters/:chapterId', component: MyStoriesComponent},
+  // {path: 'my-stories/:storyId/chapters/:chapterId/contents/:contentId', component: MyStoriesComponent},
   {path: '**', redirectTo: '/'}
 ];
 
