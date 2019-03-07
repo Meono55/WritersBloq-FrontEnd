@@ -19,7 +19,7 @@ export class AuthService {
    * Gets the currently logged in user from the API
    */
   getLoggedInUser(): Observable<User> {
-    return this.http.get(`${environment.p2ApiUrl}/auth`, {withCredentials: true})
+    return this.http.get<User>(`${environment.p2ApiUrl}/auth`, {withCredentials: true})
   }
 
 
