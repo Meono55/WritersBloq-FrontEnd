@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import Page from '../models/page.model';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import Page from '../models/Page.model';
 import Story from '../models/Story.model';
 import Chapter from '../models/Chapter.model';
 import Content from '../models/Content.model';
@@ -16,6 +16,7 @@ export class StoryService {
   searchQuery: string
   currentStoryPage: Page
   currentStory: Story
+  currentChapter : Chapter
 
   constructor(
     private http: HttpClient
@@ -51,6 +52,9 @@ export class StoryService {
   }
   createContent(chapterId: number, content: Content): Observable<Content> {
     return this.http.post<Content>(`${environment.p2ApiUrl}/chapters/${chapterId}/contents`, content, {withCredentials: true})
+  }
+  setCurrentChapter(index) {
+    this.currentChapter = this.currentStory.chapters[index];
   }
 
 }

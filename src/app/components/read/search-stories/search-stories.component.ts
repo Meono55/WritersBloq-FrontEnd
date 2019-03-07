@@ -30,6 +30,7 @@ export class SearchStoriesComponent implements OnInit, OnDestroy {
     this.loading = true
     this.storiesSub = this.storyService.getAllStories(this.currentPage).subscribe(page => {
       this.storyService.currentStoryPage = page
+      console.log(this.storyService.currentStoryPage)
       this.loading = false
     })
   }

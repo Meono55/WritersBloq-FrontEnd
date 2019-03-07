@@ -57,25 +57,10 @@
             <ng-template ngbTabContent>
               <div class="container pt-2 ">
                 <div class="row pt-3">
-                  <div class="col-md-8 mx-auto" *ngFor="let chapter of storiesService.currentStory.chapters">
+                  <div class="col-md-8 mx-auto" *ngFor="let chapter of storiesService.currentStory.chapters; let i = index">
                     <p class="mb-1 text-center">
-                      <a routerLink="'/stories/' + storiesService.currentStory.id + '/chapters/' + chapter.id">{{chapter.title}}</a>
+                      <a [routerLink]="'/stories/' + storiesService.currentStory.id + '/chapters/' + i">{{chapter.title}}</a>
                     </p>
-                    <!-- <p class="mb-1 text-center">
-                      <a routerLink="/stories/1/chapters/1">Chapter 2: Did He Survive?</a>
-                    </p>
-                    <p class="mb-1 text-center">
-                      <a routerLink="/stories/1/chapters/1">Chapter 3: He Did Not Survive</a>
-                    </p>
-                    <p class="mb-1 text-center">
-                      <a routerLink="/stories/1/chapters/1">Chapter 4: Wait Maybe He Did Survive</a>
-                    </p>
-                    <p class="mb-1 text-center">
-                      <a routerLink="/stories/1/chapters/1">Chapter 5: Wait</a>
-                    </p>
-                    <p class="mb-1 text-center">
-                      <a routerLink="/stories/1/chapters/1">Chapter 6: No, He Is Dead.</a>
-                    </p> -->
                   </div>
                 </div>
               </div>
@@ -85,3 +70,4 @@
       </div>
     </div>
   </ng-template>
+</div>

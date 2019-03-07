@@ -10,6 +10,8 @@ export class StoryCardComponent implements OnInit {
 
   @Input() story: Story
 
+  
+
   constructor() { }
 
   ngOnInit() {
