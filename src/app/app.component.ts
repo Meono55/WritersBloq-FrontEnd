@@ -16,9 +16,9 @@ export class AppComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit () {
-    // this.getUserSub = this.auth.getLoggedInUser().subscribe(user => {
-    //   this.auth.currentUser = user
-    // }, (err: HttpErrorResponse) => {})
+    this.getUserSub = this.auth.getLoggedInUser().subscribe(user => {
+      this.auth.currentUser = user
+    }, (err: HttpErrorResponse) => {})
   }
 
   ngOnDestroy() {

@@ -4,6 +4,8 @@ import Page from '../models/page.model';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import Story from '../models/Story.model';
+import Chapter from '../models/Chapter.model';
+import Content from '../models/Content.model';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +34,23 @@ export class StoryService {
   }
   getStoryById(id):Observable<Story>{
     return this.http.get(`${environment.p2ApiUrl}/stories/${id}`, {withCredentials: true})
+  }
+  getStoriesForUser(page): Observable<Page> {
+    return this.http.get(`${environment.p2ApiUrl}/stories?page=${page}&forUser=true`, {withCredentials: true})
+  }
+
+
+  createStory(story: Story): Observable<Story> {
+    return this.http.post<Story>(`${environment.p2ApiUrl}/stories`, story, {withCredentials: true})
+  }
+  createChapter(storyId: number, chapter: Chapter): Observable<Chapter> {
+    return this.http.post<Chapter>(`${environment.p2ApiUrl}/stories/${storyId}/chapters`, chapter, {withCredentials: true})
+  }
+  createComment(storyId: number, comment: Comment): Observable<Comment> {
+    return this.http.post<Comment>(`${environment.p2ApiUrl}/stories/${storyId}/comments`, comment, {withCredentials: true})
+  }
+  createContent(chapterId: number, content: Content): Observable<Content> {
+    return this.http.post<Content>(`${environment.p2ApiUrl}/chapters/${chapterId}/contents`, content, {withCredentials: true})
   }
 
 }
