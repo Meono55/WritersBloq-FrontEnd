@@ -6,6 +6,7 @@ import Page from '../models/Page.model';
 import Story from '../models/Story.model';
 import Chapter from '../models/Chapter.model';
 import Content from '../models/Content.model';
+import Comment from '../models/Comment.model';
 
 @Injectable({
   providedIn: 'root'
@@ -44,7 +45,6 @@ export class StoryService {
   getStoriesForUser(page): Observable<Page> {
     return this.http.get(`${environment.p2ApiUrl}/stories?page=${page}&forUser=true`, {withCredentials: true})
   }
-
 
   createStory(story: Story): Observable<Story> {
     return this.http.post<Story>(`${environment.p2ApiUrl}/stories`, story, {withCredentials: true})

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StoryService } from 'src/app/services/story.service';
 import Chapter from 'src/app/models/Chapter.model';
+import Comment from 'src/app/models/Comment.model';
 
 @Component({
   selector: 'app-story-view',
@@ -10,10 +11,12 @@ import Chapter from 'src/app/models/Chapter.model';
 })
 export class StoryViewComponent implements OnInit {
 
-  storyId:any
+  storyId: any
   storiesService: StoryService
   loading = false
   chapter: Chapter
+  comment: Comment = {}
+
 
 
   constructor(
@@ -31,16 +34,15 @@ export class StoryViewComponent implements OnInit {
     this.storyService.getStoryById(this.storyId).subscribe((story) => {
       this.storyService.currentStory = story
       this.loading = false
-      
-
       console.log(this.storyService.currentStory.id)
       console.log(this.storyService.currentStory.chapters)
     })
-    
   }
-
-  submitComment(){
-    
+  createComment(){
+    this.storyService.createComment(this.storyId, this.comment).subscribe((storyComment) => {
+      this.comment.content = ' '
+      this.getStoryById()
+    })
   }
 
 }
