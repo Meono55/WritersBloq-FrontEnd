@@ -9,6 +9,7 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 })
 export class ManageChapterComponent implements OnInit {
   editor = ClassicEditor
+  editing = false
 
   constructor(
     private modalService: NgbModal

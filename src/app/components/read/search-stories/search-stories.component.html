@@ -1,5 +1,5 @@
 <div class="container pt-4">
-  
+
   <!-- Search bar -->
   <div class="row pt-3">
     <div class="col-md-8 mx-auto">
@@ -10,12 +10,8 @@
           <div ngbDropdown>
             <button class="btn btn-primary rounded-fix" id="searchTypes" ngbDropdownToggle>{{storyService.searchType}}</button>
             <div ngbDropdownMenu aria-labelledby="searchTypes" class="w-100">
-              <button 
-                *ngFor="let type of storyService.possibleTypes"
-                (click)="storyService.changeSearchType(type)" 
-                class="dropdown-item"
-                [disabled]="type == storyService.searchType"
-              >{{type}}</button>
+              <button *ngFor="let type of storyService.possibleTypes" (click)="storyService.changeSearchType(type)"
+                class="dropdown-item" [disabled]="type == storyService.searchType">{{type}}</button>
             </div>
           </div>
         </div>
@@ -52,20 +48,16 @@
         <a routerLink="" class="btn btn-link rounded-circle mr-2 px-3">
           <i class="fa fa-angle-left fa-lg"></i>
         </a>
-  
+
         <!-- Page List dropdown -->
         <div ngbDropdown>
           <button class="btn btn-primary mr-2" id="pageNumbers" ngbDropdownToggle>Page {{currentPage + 1}}</button>
           <div ngbDropdownMenu aria-labelledby="pageNumbers">
-            <button 
-              *ngFor="let page of pages"
-              (click)="currentPage = page" 
-              class="dropdown-item"
-              [disabled]="page == currentPage"
-            >Page {{page + 1}}</button>
+            <button *ngFor="let page of pages" (click)="currentPage = page" class="dropdown-item" [disabled]="page == currentPage">Page
+              {{page + 1}}</button>
           </div>
         </div>
-  
+
         <!-- Next Page -->
         <a routerLink="" class="btn btn-link rounded-circle px-3">
           <i class="fa fa-angle-right fa-lg"></i>
@@ -73,14 +65,20 @@
       </div>
     </div>
   </div>
-  
-  
+
+
   <div class="row py-3">
-    <div *ngFor="let story of [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]" class="col-sm-10 col-md-6 p-2">
-      <app-story-card></app-story-card>
+    <div *ngIf="loading; else showStories" class="col d-flex flex-column text-center py-5">
+      <i class="fa fa-spin fa-circle-notch"></i>
     </div>
+    <ng-template #showStories>
+      <div *ngFor="let story of storyService.currentStoryPage.stories" class="col-sm-10 col-md-6 p-2">
+        <app-story-card [story]="story"></app-story-card>
+      </div>
+    </ng-template>
+
   </div>
-  
+
   <div class="row">
     <div class="col mx-auto mb-3">
       <div class="d-flex flex-row justify-content-center">
@@ -88,20 +86,16 @@
         <a routerLink="" class="btn btn-link rounded-circle mr-2 px-3">
           <i class="fa fa-angle-left fa-lg"></i>
         </a>
-  
+
         <!-- Page List dropdown -->
         <div ngbDropdown>
           <button class="btn btn-primary mr-2" id="pageNumbers" ngbDropdownToggle>Page {{currentPage + 1}}</button>
           <div ngbDropdownMenu aria-labelledby="pageNumbers">
-            <button 
-              *ngFor="let page of pages"
-              (click)="currentPage = page" 
-              class="dropdown-item"
-              [disabled]="page == currentPage"
-            >Page {{page + 1}}</button>
+            <button *ngFor="let page of pages" (click)="currentPage = page" class="dropdown-item" [disabled]="page == currentPage">Page
+              {{page + 1}}</button>
           </div>
         </div>
-  
+
         <!-- Next Page -->
         <a routerLink="" class="btn btn-link rounded-circle px-3">
           <i class="fa fa-angle-right fa-lg"></i>

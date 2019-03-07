@@ -23,7 +23,6 @@ const routes: Routes = [
   {path: 'my-stories/new', component: NewStoryComponent},
   {path: 'my-stories/:storyId', component: ManageStoryComponent},
   {path: 'my-stories/:storyId/chapters/:chapterId', component: ManageChapterComponent},
-  // {path: 'my-stories/:storyId/chapters/:chapterId/contents/:contentId', component: MyStoriesComponent},
   {path: '**', redirectTo: '/'}
 ];
 
