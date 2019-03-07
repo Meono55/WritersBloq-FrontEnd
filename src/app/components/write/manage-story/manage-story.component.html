@@ -1,8 +1,10 @@
 <div class="container pt-4">
+
   <div class="row text-center">
     <h2 class="mb-0 text-center w-100">Story Title</h2>
     <hr class="mt-4 mb-2 bg-primary w-50">
   </div>
+
   <div class="row">
     <ngb-tabset class="w-100" justify="center">
       <!-- Details Tab -->
@@ -69,18 +71,16 @@
           <div class="container pt-2">
             <div class="row pt-3">
               <div class="col text-center">
-                <button class="btn btn-primary">Create New Chapter</button>
+                <button (click)="open(newChapter)" class="btn btn-primary">Create New Chapter</button>
               </div>
             </div>
             <div class="row pt-3">
               <div class="col-md-8 mx-auto">
-                <div *ngFor="let x of [1, 2, 3, 4]" class="d-flex flex-row p-2 chp-row">
-                  <p class="mb-1 mr-auto text-center pt-2">
-                    <a routerLink="/stories/1/chapters/1">Chapter {{x}}: We Will Survive!</a>
-                  </p>
-                  <button class="btn btn-link text-danger">
-                    <i class="fa fa-times"></i>
-                  </button>
+                <div 
+                  routerLink="/my-stories/1/chapters/1" 
+                  *ngFor="let x of [1, 2, 3, 4]" 
+                  class="d-flex flex-row p-2 chp-row">
+                  <p class="mb-1 mr-auto pt-2">Chapter {{x}}: We Will Survive!</p>
                 </div> 
               </div>
             </div>
@@ -89,4 +89,25 @@
       </ngb-tab>
     </ngb-tabset>
   </div>
+
+
+
+  <ng-template #newChapter let-modal>
+    <div class="modal-header border-light pb-2">
+      <h4 class="w-100 pl-4 text-center" id="modal-basic-title">New Chapter</h4>
+      <button class="close" aria-label="Close" (click)="modal.dismiss()">
+        <i class="fa fa-times mt-1"></i>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="chapterName">Chapter Name</label>
+        <input type="text" name="chapterName" class="form-control" placeholder="Enter Chapter Name">
+      </div>
+      <button [class]="(loading ? 'disabled ' : '') + 'btn btn-primary d-block w-50 mx-auto'" (click)="createChapter()">
+        <div *ngIf="!loading; else spinner">Create</div>
+        <ng-template #spinner><i class="fa fa-circle-notch fa-spin"></i></ng-template>
+      </button>
+    </div>
+  </ng-template>
 </div>

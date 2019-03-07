@@ -9,7 +9,7 @@ import { MyStoriesComponent } from './components/write/my-stories/my-stories.com
 import { NewStoryComponent } from './components/write/new-story/new-story.component';
 import { ManageStoryComponent } from './components/write/manage-story/manage-story.component';
 import { ReadChapterComponent } from './components/read/read-chapter/read-chapter.component';
-import { NewChapterComponent } from './components/write/new-chapter/new-chapter.component';
+import { ManageChapterComponent } from './components/write/manage-chapter/manage-chapter.component';
 
 const routes: Routes = [
   {path: '', component: HomeBaseComponent},
@@ -22,8 +22,7 @@ const routes: Routes = [
   {path: 'my-stories', component: MyStoriesComponent},
   {path: 'my-stories/new', component: NewStoryComponent},
   {path: 'my-stories/:storyId', component: ManageStoryComponent},
-  {path: 'my-stories/:storyId/chapters/new', component: NewChapterComponent},
-  // {path: 'my-stories/:storyId/chapters/:chapterId', component: MyStoriesComponent},
+  {path: 'my-stories/:storyId/chapters/:chapterId', component: ManageChapterComponent},
   // {path: 'my-stories/:storyId/chapters/:chapterId/contents/:contentId', component: MyStoriesComponent},
   {path: '**', redirectTo: '/'}
 ];

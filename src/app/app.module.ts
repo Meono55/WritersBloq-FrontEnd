@@ -21,14 +21,12 @@ import { StoryService } from './services/story.service';
 import { SearchStoriesComponent } from './components/read/search-stories/search-stories.component';
 import { StoryViewComponent } from './components/read/story-view/story-view.component';
 import { MyStoriesComponent } from './components/write/my-stories/my-stories.component';
-import { WriteBaseComponent } from './components/write/write-base/write-base.component';
 import { NewStoryComponent } from './components/write/new-story/new-story.component';
 import { MyStoryCardComponent } from './components/general/my-story-card/my-story-card.component';
 import { ManageStoryComponent } from './components/write/manage-story/manage-story.component';
-import { StoryBaseComponent } from './components/write/story-base/story-base.component';
 import { ReadChapterComponent } from './components/read/read-chapter/read-chapter.component';
-import { NewChapterComponent } from './components/write/new-chapter/new-chapter.component';
-import { ChapterBaseComponent } from './components/write/chapter-base/chapter-base.component';
+import { ManageChapterComponent } from './components/write/manage-chapter/manage-chapter.component';
+import { WriteContentComponent } from './components/write/write-content/write-content.component';
 
 @NgModule({
   declarations: [
@@ -44,14 +42,12 @@ import { ChapterBaseComponent } from './components/write/chapter-base/chapter-ba
     SearchStoriesComponent,
     StoryViewComponent,
     MyStoriesComponent,
-    WriteBaseComponent,
     NewStoryComponent,
     MyStoryCardComponent,
     ManageStoryComponent,
-    StoryBaseComponent,
     ReadChapterComponent,
-    NewChapterComponent,
-    ChapterBaseComponent
+    ManageChapterComponent,
+    WriteContentComponent
   ],
   imports: [
     BrowserModule,

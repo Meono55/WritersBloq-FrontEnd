@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WriteBaseComponent } from './write-base.component';
+import { ManageChapterComponent } from './manage-chapter.component';
 
-describe('WriteBaseComponent', () => {
-  let component: WriteBaseComponent;
-  let fixture: ComponentFixture<WriteBaseComponent>;
+describe('ManageChapterComponent', () => {
+  let component: ManageChapterComponent;
+  let fixture: ComponentFixture<ManageChapterComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WriteBaseComponent ]
+      declarations: [ ManageChapterComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WriteBaseComponent);
+    fixture = TestBed.createComponent(ManageChapterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
