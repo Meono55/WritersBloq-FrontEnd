@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import Page from '../models/page.model';
+import Page from '../models/Page.model';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import Story from '../models/Story.model';
+import Chapter from '../models/Chapter.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class StoryService {
   searchQuery: string
   currentStoryPage: Page
   currentStory: Story
+  currentChapter : Chapter
 
   constructor(
     private http: HttpClient
@@ -32,6 +34,12 @@ export class StoryService {
   }
   getStoryById(id):Observable<Story>{
     return this.http.get(`${environment.p2ApiUrl}/stories/${id}`, {withCredentials: true})
+  }
+  // getChapterById(id):Observable<Chapter>{
+  //   return this.http.get(`${environment.p2ApiUrl}/chapters/${id}`, {withCredentials: true})
+  // }
+  setCurrentChapter(index) {
+    this.currentChapter = this.currentStory.chapters[index];
   }
 
 }

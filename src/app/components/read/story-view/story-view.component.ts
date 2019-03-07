@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StoryService } from 'src/app/services/story.service';
+import Chapter from 'src/app/models/Chapter.model';
 
 @Component({
   selector: 'app-story-view',
@@ -12,6 +13,7 @@ export class StoryViewComponent implements OnInit {
   storyId:any
   storiesService: StoryService
   loading = false
+  chapter: Chapter
 
 
   constructor(
@@ -29,8 +31,15 @@ export class StoryViewComponent implements OnInit {
     this.storyService.getStoryById(this.storyId).subscribe((story) => {
       this.storyService.currentStory = story
       this.loading = false
-      console.log(this.storyService.currentStory)
+      
+
+      console.log(this.storyService.currentStory.id)
+      console.log(this.storyService.currentStory.chapters)
     })
+    
+  }
+
+  submitComment(){
     
   }
 
