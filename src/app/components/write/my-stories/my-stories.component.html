@@ -48,43 +48,17 @@
       <i class="fa fa-spin fa-circle-notch"></i>
     </div>
     <ng-template #showStories>
-      <div class="col-sm-10 mx-auto py-5">
+      <div *ngIf="storyService.currentStoryPage.stories.length == 0; else listStories" class="col-sm-10 mx-auto py-5">
         <p class="text-center">No Stories</p>
       </div>
-      <div *ngFor="let story of storyService.currentStoryPage.stories" class="col-sm-10 mx-auto col-md-6 p-2">
-        <app-story-card [story]="story"></app-story-card>
-      </div>
+      <ng-template #listStories>
+        <div *ngFor="let story of storyService.currentStoryPage.stories" class="col-sm-10 mx-auto col-md-6 p-2">
+          <app-my-story-card [story]="story"></app-my-story-card>
+        </div>
+      </ng-template>
     </ng-template>
   </div>
   
-
-  <!-- PageControls -->
-  <div class="row">
-    <div class="col mx-auto mb-3">
-      <div class="d-flex flex-row justify-content-center">
-        <!-- Previous Page -->
-        <a routerLink="" class="btn btn-link rounded-circle mr-2 px-3">
-          <i class="fa fa-angle-left fa-lg"></i>
-        </a>
-        <!-- Page List dropdown -->
-        <div ngbDropdown>
-          <button class="btn btn-primary mr-2" id="pageNumbers" ngbDropdownToggle>Page {{currentPage + 1}}</button>
-          <div ngbDropdownMenu aria-labelledby="pageNumbers">
-            <button 
-              *ngFor="let page of pages"
-              (click)="currentPage = page" 
-              class="dropdown-item"
-              [disabled]="page == currentPage"
-            >Page {{page + 1}}</button>
-          </div>
-        </div>
-        <!-- Next Page -->
-        <a routerLink="" class="btn btn-link rounded-circle px-3">
-          <i class="fa fa-angle-right fa-lg"></i>
-        </a>
-      </div>
-    </div>
-  </div>
 
 </div>
 

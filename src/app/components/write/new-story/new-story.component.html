@@ -12,29 +12,32 @@
 
   <div class="row pb-2">
     <div class="col-md-7 mx-auto">
-      <form>
+      <form (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="title">Title</label>
-          <input type="text" name="title" class="form-control" placeholder="Enter Story's Title">
+          <input type="text" name="title" class="form-control" placeholder="Enter Story's Title" [(ngModel)]="newStory.title">
         </div>
         <div class="form-group">
           <label for="title">Genre</label>
-          <select class="form-control" name="genre">
+          <select class="form-control" name="genre" [(ngModel)]="newStory.genre">
             <option selected>Choose A Genre..</option>
             <option *ngFor="let g of genres" [value]="g.toLowerCase()">{{g.toLowerCase()}}</option>
           </select>
         </div>
         <div class="form-group">
           <label for="tags">Tags</label>
-          <input type="text" name="tags" class="form-control" placeholder="Seperate tags by commas">
+          <input type="text" name="tags" class="form-control" placeholder="Seperate tags by commas" [(ngModel)]="newTags">
           <small id="tagsHelp" class="form-text text-muted">Enter tags seperated by commas</small>
         </div>
         <div class="form-group">
           <label for="summary">Summary</label>
-          <textarea class="form-control" name="summary" rows="3"></textarea>
+          <textarea class="form-control" name="summary" rows="3" [(ngModel)]="newStory.summary"></textarea>
         </div>
-        <div class="w-100">
-          <button type="submit" class="btn btn-primary btn-lg d-block mx-auto">Create</button>
+        <div class="w-50 mx-auto">
+          <button type="submit" [class.disabled]="loading" class="btn btn-primary btn-lg btn-block">
+            <span *ngIf="!loading; else spinner">Create</span>
+            <ng-template #spinner><i class="fa fa-circle-notch fa-spin"></i></ng-template>
+          </button>
         </div>
       </form>
     </div>

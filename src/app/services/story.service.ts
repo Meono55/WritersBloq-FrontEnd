@@ -30,6 +30,11 @@ export class StoryService {
     this.searchType = type
     this.searchQuery = ''
   }
+  setCurrentChapter(index) {
+    this.currentChapter = this.currentStory.chapters[index];
+  }
+
+  
   getAllStories(page):Observable<Page>{
     return this.http.get(`${environment.p2ApiUrl}/stories?page=${page}`, {withCredentials: true})
   }
@@ -52,9 +57,6 @@ export class StoryService {
   }
   createContent(chapterId: number, content: Content): Observable<Content> {
     return this.http.post<Content>(`${environment.p2ApiUrl}/chapters/${chapterId}/contents`, content, {withCredentials: true})
-  }
-  setCurrentChapter(index) {
-    this.currentChapter = this.currentStory.chapters[index];
   }
 
 }
