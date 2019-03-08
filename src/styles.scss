@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+
+// Changing Bootstrap color scheme
+// #263238 - Blue black
+// #0F444F - WrBq Blue
+// #2B803E - WrBq Green
+// #81C18F - WrBq Light Green
+// #012C34 - WrBq Dark Blue 
+
+$theme-colors: (
+  "primary": #50A162,
+  "secondary": #0F444F,
+  "dark": #263238,
+  "success": #106022
+);
+
+// Import bootstrap to finalize changes
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+body {
+  overflow-x: hidden;
+  color: #263238;
+  font-family: Maven Pro;
+}
+
+.ck-editor__editable {
+  min-height: 60vh;
+}

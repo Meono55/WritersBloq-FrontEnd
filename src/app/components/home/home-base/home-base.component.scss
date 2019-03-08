@@ -1,0 +1,13 @@
+.banner-base {
+  background-color: #999;
+}
+
+.banner-inner {
+  height: 300px;
+  background: url('../../../../assets/images/wrbq-banner.jpg');
+}
+
+.rounded-fix {
+  border-bottom-right-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}

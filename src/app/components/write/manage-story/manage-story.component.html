@@ -1,0 +1,110 @@
+<div class="container pt-4">
+
+  <div class="row text-center">
+    <h2 class="mb-0 text-center w-100">{{storiesService.currentStory ? storiesService.currentStory.title : 'Loading'}}</h2>
+    <hr class="mt-4 mb-2 bg-primary w-50">
+  </div>
+  
+  <div *ngIf="loading; else viewDetails" class="col d-flex flex-column text-center py-5">
+    <i class="fa fa-spin fa-circle-notch"></i>
+  </div>
+  <ng-template #viewDetails>
+    <div class="row py-3">
+      <ngb-tabset class="w-100" justify="center">
+  
+        <!-- Details -->
+        <ngb-tab title="Details">
+          <ng-template ngbTabContent>
+            <div class="container">
+              <div class="row my-3 ">
+                <div class="bg-secondary text-white pr-2 d-flex flex-column justify-content-center text-right d-inline-block mx-auto">
+                  <i class="fas fa-book fa-3x m-5"></i>
+                </div>
+              </div>
+              <div class="row my-3">
+                <div class="col text-center">
+                  <button routerLink="/my-stories/1/edit" class="btn btn-secondary mr-2">Edit Story</button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8 mx-auto d-flex flex-row text-center">
+                  <div class="w-100">
+                    <p class="mb-1 mr-2">Author: {{storiesService.currentStory.author.firstName}} {{storiesService.currentStory.author.lastName}}</p>
+                    <p class="mb-1 mr-2">Genre: {{storiesService.currentStory.genre}}</p>
+                    <p class="mb-1 mr-2">Tags: <span *ngFor= "let tag of storiesService.currentStory.tags; let i = index">#{{tag.name}}{{i!=storiesService.currentStory.tags.length-1 ? ', ' : ''}}</span></p>
+                    <p class="mb-1">Publish Date: {{storiesService.currentStory.creationDate | date}}</p>
+                  </div>
+                </div>
+              </div>
+              <p class="mb-1 text-center">Summary: {{storiesService.currentStory.summary}}
+              </p>
+            </div>
+          </ng-template>
+        </ngb-tab>
+  
+        <!-- Comments Tab -->
+        <ngb-tab title="Comments">
+          <ng-template ngbTabContent>
+            <div class="container pt-2">
+              <div class="row">
+                <div class="col-md-8 mx-auto">
+                  <input type="text" class="form-control" placeholder="New Comment" [(ngModel)]="comment.content">
+                  <div class="text-center mt-1 mb-2">
+                    <button (click) = "createComment()" class="btn btn-primary ">Submit</button>
+                  </div>
+                </div>
+              </div>
+              <div class="row pt-3">
+                <div class="col-md-8 mx-auto border rounded -shadow p-2 mb-3" *ngFor= "let comment of storiesService.currentStory.comments.reverse()">
+                  <p class="mb-1">{{comment.content}}</p>
+                  <p class="mb-1"><small>By: {{comment.author.firstName}} {{comment.author.lastName}} <br> {{comment.creationDate | date:"medium"}}</small></p>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+  
+        <!-- Chapters Tab -->
+        <ngb-tab title="Chapters">
+          <ng-template ngbTabContent>
+            <div class="container pt-2 ">
+              <div class="row">
+                <div class="col text-center">
+                  <button (click)="open(createChapterModal)" class="btn btn-secondary mr-2">New Chapter</button>
+                </div>
+              </div>
+              <div class="row pt-3">
+                <div class="col-md-8 mx-auto" *ngFor="let chapter of storiesService.currentStory.chapters; let i = index">
+                  <p class="mb-1 text-center">
+                    <a [routerLink]="'/my-stories/' + storiesService.currentStory.id + '/chapters/' + i">{{chapter.title}}</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+      </ngb-tabset>
+    </div>
+  </ng-template>
+
+
+
+  <ng-template #createChapterModal let-modal>
+    <div class="modal-header border-light pb-2">
+      <h4 class="w-100 pl-4 text-center" id="modal-basic-title">New Chapter</h4>
+      <button class="close" aria-label="Close" (click)="modal.dismiss()">
+        <i class="fa fa-times mt-1"></i>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="chapterName">Chapter Name</label>
+        <input type="text" name="chapterName" class="form-control" placeholder="Enter Chapter Name" [(ngModel)]="chapter.title">
+      </div>
+      <button [class]="(loading ? 'disabled ' : '') + 'btn btn-primary d-block w-50 mx-auto'" (click)="createChapter()">
+        <div *ngIf="!loading; else spinner">Create</div>
+        <ng-template #spinner><i class="fa fa-circle-notch fa-spin"></i></ng-template>
+      </button>
+    </div>
+  </ng-template>
+</div>

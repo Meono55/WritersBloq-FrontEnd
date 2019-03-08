@@ -1,0 +1,33 @@
+<div class="container pt-4">
+  <div *ngIf="loading; else showStory" class="col d-flex flex-column text-center py-5">
+    <i class="fa fa-spin fa-circle-notch"></i>
+  </div>
+  <ng-template #showStory>
+    <div class="row text-center">
+      <h2 class="mb-0 text-center w-100">{{storiesService.currentChapter.title}}</h2>
+      <hr class="mt-4 mb-2 bg-primary w-50">
+    </div>
+    <div class="d-flex flex-row justify-content-around pt-3 w-100">
+      <button (click)="previousChapter()" [disabled]="chapterId == 0" class="btn btn-primary btn-sm">Back Chapter</button>
+      <button 
+        (click)="nextChapter()" 
+        [disabled]="chapterId == (storiesService.currentStory.chapters.length - 1)" 
+        class="btn btn-primary btn-sm">Next Chapter</button>
+    </div>
+    <div class="row pt-3">
+      <div *ngIf="!currentContent; else contentExists" class="col-md-8 mx-auto p-3 text-primary">
+        <p class="mx-auto text-center">No Content Available</p>
+      </div>
+      <ng-template #contentExists>
+        <div class="col-md-8 mx-auto border rounded p-3 mb-2 indenter">
+          {{currentContent.contentData}}
+          <div class="d-flex flex-row justify-content-between pt-3 w-100">
+            <button (click)="prevContent()" class="btn btn-primary btn-sm">Back Page</button>
+            <button (click)="nextContent()" class="btn btn-primary btn-sm">Next Page</button>
+          </div>
+        </div>
+      </ng-template>
+
+    </div>
+  </ng-template>
+</div>

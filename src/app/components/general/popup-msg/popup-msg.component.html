@@ -1,0 +1,14 @@
+<div *ngIf="popup.show" class="popup-container position-fixed w-100">
+  <!-- <div [class]="popup.style + ' toast shadow mx-auto text-white'"> -->
+  <div class="toast shadow mx-auto text-dark'">
+    <div class="toast-header text-white">
+      <strong class="mr-auto">
+        <i [class]="popup.header + ' fa fa-lg'"></i>
+      </strong>
+      <button (click)="popup.dismiss()" class="ml-2 mb-1 close text-dark" aria-label="close">
+        <i class="fa fa-times"></i>
+      </button>
+    </div> 
+      <div class="toast-body">{{popup.msg}}</div>
+  </div>
+</div>

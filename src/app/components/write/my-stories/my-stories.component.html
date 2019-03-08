@@ -1,0 +1,68 @@
+<div class="container pt-4">
+  
+  <!-- Title -->
+  <div class="row text-center">
+    <h2 class="mb-0 text-center w-100">My Stories</h2>
+    <hr class="mt-4 mb-2 bg-primary w-50">
+  </div>
+
+
+  <div class="row pt-2">
+    <button routerLink="/my-stories/new" class="btn btn-primary btn-lg d-block mx-auto">New Story</button>
+  </div>
+
+
+  <!-- Stories List Page router outlet -->
+  <div class="row">
+    <div class="col mx-auto mt-3">
+      <div class="d-flex flex-row w-100 justify-content-center py-2">{{storyService.currentStoryPage.resultCount}} Stories</div>
+      <div class="d-flex flex-row justify-content-center">
+        <!-- Previous Page -->
+        <button 
+          (click)="currentPage = currentPage - 1" 
+          [disabled]="currentPage == 0" 
+          class="btn btn-link rounded-circle mr-2 px-3">
+          <i class="fa fa-angle-left fa-lg"></i>
+        </button>
+
+        <!-- Page List dropdown -->
+        <div ngbDropdown>
+          <button class="btn btn-primary mr-2" id="pageNumbers" ngbDropdownToggle>Page {{currentPage + 1}}</button>
+          <div ngbDropdownMenu aria-labelledby="pageNumbers">
+            <button *ngFor="let page of pages" (click)="currentPage = page" class="dropdown-item" [disabled]="page == currentPage">Page
+              {{page + 1}}</button>
+          </div>
+        </div>
+
+        <!-- Next Page -->
+        <button 
+          (click)="currentPage = currentPage + 1" 
+          [disabled]="currentPage == (pages.length - 1)" 
+          class="btn btn-link rounded-circle px-3">
+          <i class="fa fa-angle-right fa-lg"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- Actual List of stories -->
+  <div class="row py-3">
+    <div *ngIf="loading; else showStories" class="col d-flex flex-column text-center py-5">
+      <i class="fa fa-spin fa-circle-notch"></i>
+    </div>
+    <ng-template #showStories>
+      <div *ngIf="storyService.currentStoryPage.stories.length == 0; else listStories" class="col-sm-10 mx-auto py-5">
+        <p class="text-center">No Stories</p>
+      </div>
+      <ng-template #listStories>
+        <div *ngFor="let story of storyService.currentStoryPage.stories" class="col-sm-10 mx-auto col-md-6 p-2">
+          <app-my-story-card [story]="story"></app-my-story-card>
+        </div>
+      </ng-template>
+    </ng-template>
+  </div>
+  
+
+</div>
+
