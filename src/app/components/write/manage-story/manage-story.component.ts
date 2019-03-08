@@ -35,8 +35,6 @@ export class ManageStoryComponent implements OnInit {
     this.storyService.getStoryById(this.storyId).subscribe((story) => {
       this.storyService.currentStory = story
       this.loading = false
-      console.log(this.storyService.currentStory.id)
-      console.log(this.storyService.currentStory.chapters)
     })
   }
   createComment(){
