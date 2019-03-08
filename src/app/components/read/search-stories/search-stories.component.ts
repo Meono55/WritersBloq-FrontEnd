@@ -11,8 +11,8 @@ export class SearchStoriesComponent implements OnInit, OnDestroy {
 
   storyService: StoryService
   storiesSub: Subscription
-  pages: Array<number> = [0, 1, 2, 3, 4, 5, 6]
-  currentPage: number = this.pages[0]
+  pages: Array<number> = []
+  currentPage: number = 0
   loading = false
 
   constructor(
@@ -25,12 +25,19 @@ export class SearchStoriesComponent implements OnInit, OnDestroy {
     this.getStories()
   }
 
+  populatePages(max: number) {
+    for (let i = 0; i < max; i++) {
+      this.pages.push(i)
+    }
+  }
+
 
   getStories() {
     this.loading = true
     this.storiesSub = this.storyService.getAllStories(this.currentPage).subscribe(page => {
       this.storyService.currentStoryPage = page
-      console.log(this.storyService.currentStoryPage)
+      let pageMax = page.resultCount % page.pageSize > 0 ? Math.floor(page.resultCount / page.pageSize) + 1 : (page.resultCount / page.pageSize)
+      this.populatePages(pageMax)
       this.loading = false
     })
   }
@@ -40,7 +47,6 @@ export class SearchStoriesComponent implements OnInit, OnDestroy {
     this.storyService.filterStories(this.currentPage).subscribe((page) => {
       this.storyService.currentStoryPage = page
       this.loading = false
-      console.log(this.storyService.currentStoryPage)
     })
 
   }

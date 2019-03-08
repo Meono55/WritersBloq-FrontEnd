@@ -32,7 +32,8 @@ export class ManageChapterComponent implements OnInit {
     private route: ActivatedRoute,
     private storyService: StoryService,
     private popup: PopupMsgService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -77,6 +78,7 @@ export class ManageChapterComponent implements OnInit {
       this.popup.showMsg(false, 'Content created')
       this.newContent.contentData = ''
       this.modalService.dismissAll()
+      this.router.navigateByUrl('/my-stories/' + this.storyId)
     }, (err: HttpErrorResponse) => {
       this.popup.showMsg(true, err.error)
     })

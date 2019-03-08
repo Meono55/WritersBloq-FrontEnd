@@ -15,28 +15,32 @@
   <!-- Stories List Page router outlet -->
   <div class="row">
     <div class="col mx-auto mt-3">
-      <div class="d-flex flex-row w-100 justify-content-center py-2">15 Stories</div>
+      <div class="d-flex flex-row w-100 justify-content-center py-2">{{storyService.currentStoryPage.resultCount}} Stories</div>
       <div class="d-flex flex-row justify-content-center">
         <!-- Previous Page -->
-        <a routerLink="" class="btn btn-link rounded-circle mr-2 px-3">
+        <button 
+          (click)="currentPage = currentPage - 1" 
+          [disabled]="currentPage == 0" 
+          class="btn btn-link rounded-circle mr-2 px-3">
           <i class="fa fa-angle-left fa-lg"></i>
-        </a>
+        </button>
+
         <!-- Page List dropdown -->
         <div ngbDropdown>
           <button class="btn btn-primary mr-2" id="pageNumbers" ngbDropdownToggle>Page {{currentPage + 1}}</button>
           <div ngbDropdownMenu aria-labelledby="pageNumbers">
-            <button 
-              *ngFor="let page of pages"
-              (click)="currentPage = page" 
-              class="dropdown-item"
-              [disabled]="page == currentPage"
-            >Page {{page + 1}}</button>
+            <button *ngFor="let page of pages" (click)="currentPage = page" class="dropdown-item" [disabled]="page == currentPage">Page
+              {{page + 1}}</button>
           </div>
         </div>
+
         <!-- Next Page -->
-        <a routerLink="" class="btn btn-link rounded-circle px-3">
+        <button 
+          (click)="currentPage = currentPage + 1" 
+          [disabled]="currentPage == (pages.length - 1)" 
+          class="btn btn-link rounded-circle px-3">
           <i class="fa fa-angle-right fa-lg"></i>
-        </a>
+        </button>
       </div>
     </div>
   </div>

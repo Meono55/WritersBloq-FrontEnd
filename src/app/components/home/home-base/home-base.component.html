@@ -3,7 +3,6 @@
   <div class="banner-base">
     <div class="container p-0">
       <div class="banner-inner">
-        <!-- Banner content -->
       </div>
     </div>
   </div>
@@ -11,43 +10,10 @@
   <!-- Home Page Search bar -->
   <div class="container py-4">
     <div class="row">
-      <div class="col-md-8 mx-auto">
-        <div class="input-group shadow">
-
-          <!-- Choose a search type -->
-          <div class="input-group-prepend">
-            <div ngbDropdown>
-              <button class="btn btn-primary rounded-fix" id="searchTypes" ngbDropdownToggle>{{storyService.searchType}}</button>
-              <div ngbDropdownMenu aria-labelledby="searchTypes" class="w-100">
-                <button 
-                  *ngFor="let type of storyService.possibleTypes"
-                  (click)="storyService.changeSearchType(type)" 
-                  class="dropdown-item"
-                  [disabled]="type == storyService.searchType"
-                >{{type}}</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Enter search query -->
-          <select *ngIf="storyService.searchType != 'Title'; else titleSearch" class="form-control">
-            <option selected>Search by {{storyService.searchType}}</option>
-            <option>Fantasy</option>
-            <option>Horror</option>
-            <option>Mystery</option>
-            <option>Thriller</option>
-          </select>
-          <ng-template #titleSearch>
-            <input type="text" name="search" class="form-control" [placeholder]="'Search by ' + storyService.searchType">
-          </ng-template>
-
-          <!-- Execute the search -->
-          <div class="input-group-append">
-            <button class="btn btn-primary">
-              <i class="fa fa-search"></i>
-            </button>
-          </div>
-        </div>
+      <div class="col-md-7 mx-auto text-center">
+        <h3 class="mb-2">Writers Bloq</h3>
+        <p class="mb-2">Read the works of up and coming writers. Access hundereds of stories all self-published by individuals like yourself! Create an accoount to contribute to the website's story library by registering. Not a writer, but more of a reader? No problem! You don't need to register to read! Hit the get started button to begin reading stories.</p>
+        <button routerLink="/stories" class="btn btn-primary btn-lg">Get Started</button>
       </div>
     </div>
   </div>

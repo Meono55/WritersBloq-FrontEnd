@@ -13,8 +13,8 @@ export class MyStoriesComponent implements OnInit {
   storyService: StoryService
   storySub: Subscription
   loading = false
-  pages: Array<number> = [0, 1]
-  currentPage: number = this.pages[0]
+  pages: Array<number> = []
+  currentPage: number = 0
 
   constructor(
     private storys: StoryService,
@@ -26,11 +26,19 @@ export class MyStoriesComponent implements OnInit {
     this.storyService = this.storys
     this.getStories()
   }
+  
+  populatePages(max: number) {
+    for (let i = 0; i < max; i++) {
+      this.pages.push(i)
+    }
+  }
 
   getStories() {
     this.loading = true
     this.storySub = this.storyService.getStoriesForUser(this.currentPage).subscribe(page => {
-      this.storyService.currentStoryPage = page;
+      this.storyService.currentStoryPage = page
+      let pageMax = page.resultCount % page.pageSize > 0 ? Math.floor(page.resultCount / page.pageSize) + 1 : (page.resultCount / page.pageSize)
+      this.populatePages(pageMax)
       this.loading = false
     }, (err: HttpErrorResponse) => {
       this.popup.showMsg(true, err.error)

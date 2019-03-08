@@ -8,7 +8,7 @@
     <div class="col-md-8">
       <div class="card-body p-2">
         <h5 class="card-title">{{story.title}}</h5>
-        <p class="card-text">{{story.summary}}</p>
+        <p class="card-text">{{story.summary.length > 50 ? story.summary.slice(0,50) + '...' : story.summary}}</p>
 
         <div class="d-flex flex-row-reverse p-1">
           <button [routerLink]="'/my-stories/' + story.id" class="btn btn-primary btn-sm">View</button>
