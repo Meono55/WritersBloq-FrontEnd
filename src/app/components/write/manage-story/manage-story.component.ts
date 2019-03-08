@@ -15,19 +15,26 @@ export class ManageStoryComponent implements OnInit {
   storyId: any
   storiesService: StoryService
   loading = false
-  chapter: Chapter
+  chapter: Chapter = {}
   comment: Comment = {}
 
 
 
   constructor(
     private route: ActivatedRoute,
-    private storyService: StoryService) { }
+    private storyService: StoryService,
+    private modalService: NgbModal
+  ) { }
 
   ngOnInit() {
     this.storiesService = this.storyService
     this.storyId = this.route.snapshot.paramMap.get('storyId')
     this.getStoryById()
+  }
+
+  
+  open(modal) {
+    this.modalService.open(modal)
   }
 
   getStoryById(){
@@ -37,9 +44,16 @@ export class ManageStoryComponent implements OnInit {
       this.loading = false
     })
   }
+  createChapter() {
+    this.storyService.createChapter(this.storyId, this.chapter).subscribe(chapter => {
+      this.chapter.title = ''
+      this.modalService.dismissAll()
+      this.getStoryById()
+    })
+  }
   createComment(){
     this.storyService.createComment(this.storyId, this.comment).subscribe((storyComment) => {
-      this.comment.content = ' '
+      this.comment.content = ''
       this.getStoryById()
     })
   }

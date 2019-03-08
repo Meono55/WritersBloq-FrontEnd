@@ -7,10 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AuthService } from './auth.service';
 
-// class credentials {
-//   constructor(public email: string,
-//               public password: string) {}
-// }
 
 class credentials {
   constructor(
