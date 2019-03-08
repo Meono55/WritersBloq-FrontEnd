@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute } from '@angular/router';
+import { StoryService } from '../../../services/story.service';
+import Chapter from '../../../models/Chapter.model';
+import Comment from '../../../models/Comment.model';
 
 @Component({
   selector: 'app-manage-story',
@@ -7,22 +11,39 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./manage-story.component.scss']
 })
 export class ManageStoryComponent implements OnInit {
+
+  storyId: any
+  storiesService: StoryService
   loading = false
-  newChapterName: string
+  chapter: Chapter
+  comment: Comment = {}
+
+
 
   constructor(
-    private modalService: NgbModal
-  ) { }
+    private route: ActivatedRoute,
+    private storyService: StoryService) { }
 
   ngOnInit() {
+    this.storiesService = this.storyService
+    this.storyId = this.route.snapshot.paramMap.get('storyId')
+    this.getStoryById()
   }
 
-  open(modal) {
-    this.modalService.open(modal)
+  getStoryById(){
+    this.loading = true
+    this.storyService.getStoryById(this.storyId).subscribe((story) => {
+      this.storyService.currentStory = story
+      this.loading = false
+      console.log(this.storyService.currentStory.id)
+      console.log(this.storyService.currentStory.chapters)
+    })
   }
-
-  createChapter() {
-
+  createComment(){
+    this.storyService.createComment(this.storyId, this.comment).subscribe((storyComment) => {
+      this.comment.content = ' '
+      this.getStoryById()
+    })
   }
 
 }

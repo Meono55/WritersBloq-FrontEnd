@@ -42,6 +42,36 @@
         </ng-template>
       </ngb-tab>
 
+      <!-- Details -->
+      <ngb-tab title="Details">
+        <ng-template ngbTabContent>
+          <div class="container">
+            <div class="row my-3 ">
+              <div class="bg-secondary text-white pr-2 d-flex flex-column justify-content-center text-right d-inline-block mx-auto">
+                <i class="fas fa-book fa-3x m-5"></i>
+              </div>
+            </div>
+            <div class="row my-3">
+              <div class="col text-center">
+                <button routerLink="/my-stories/1/edit" class="btn btn-secondary mr-2">Edit Story</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-8 mx-auto d-flex flex-row text-center">
+                <div class="w-100">
+                  <p class="mb-1 mr-2">Author: {{storiesService.currentStory.author.firstName}} {{storiesService.currentStory.author.lastName}}</p>
+                  <p class="mb-1 mr-2">Genre: {{storiesService.currentStory.genre}}</p>
+                  <p class="mb-1 mr-2">Tags: <span *ngFor= "let tag of storiesService.currentStory.tags; let i = index">#{{tag.name}}{{i!=storiesService.currentStory.tags.length-1 ? ', ' : ''}}</span></p>
+                  <p class="mb-1">Publish Date: {{storiesService.currentStory.creationDate | date}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="mb-1 text-center">Summary: {{storiesService.currentStory.summary}}
+          </p>
+        </ng-template>
+      </ngb-tab>
+
       <!-- Comments Tab -->
       <ngb-tab title="Comments">
         <ng-template ngbTabContent>
