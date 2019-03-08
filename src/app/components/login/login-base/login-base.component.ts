@@ -4,7 +4,6 @@ import { Subscription } from 'rxjs';
 import { PopupMsgService } from '../../../services/popup-msg.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login-base',
@@ -20,8 +19,7 @@ export class LoginBaseComponent implements OnInit, OnDestroy {
   constructor(
     private auth: AuthService,
     private popup: PopupMsgService,
-    private router: Router,
-    private cookies: CookieService
+    private router: Router
   ) { }
 
   ngOnInit() {

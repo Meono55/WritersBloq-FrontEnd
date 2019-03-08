@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,16 @@ import { FormsModule } from '@angular/forms';
 import { PopupMsgComponent } from './components/general/popup-msg/popup-msg.component';
 import { PopupMsgService } from './services/popup-msg.service';
 import { AuthService } from './services/auth.service';
+import { StoryService } from './services/story.service';
+import { SearchStoriesComponent } from './components/read/search-stories/search-stories.component';
+import { StoryViewComponent } from './components/read/story-view/story-view.component';
+import { MyStoriesComponent } from './components/write/my-stories/my-stories.component';
+import { NewStoryComponent } from './components/write/new-story/new-story.component';
+import { MyStoryCardComponent } from './components/general/my-story-card/my-story-card.component';
+import { ManageStoryComponent } from './components/write/manage-story/manage-story.component';
+import { ReadChapterComponent } from './components/read/read-chapter/read-chapter.component';
+import { ManageChapterComponent } from './components/write/manage-chapter/manage-chapter.component';
+import { WriteContentComponent } from './components/write/write-content/write-content.component';
 
 @NgModule({
   declarations: [
@@ -27,16 +38,26 @@ import { AuthService } from './services/auth.service';
     StoryCardComponent,
     LoginBaseComponent,
     RegisterBaseComponent,
-    PopupMsgComponent
+    PopupMsgComponent,
+    SearchStoriesComponent,
+    StoryViewComponent,
+    MyStoriesComponent,
+    NewStoryComponent,
+    MyStoryCardComponent,
+    ManageStoryComponent,
+    ReadChapterComponent,
+    ManageChapterComponent,
+    WriteContentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CKEditorModule
   ],
-  providers: [PopupMsgService, AuthService],
+  providers: [PopupMsgService, AuthService, StoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

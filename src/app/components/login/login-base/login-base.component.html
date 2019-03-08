@@ -1,8 +1,10 @@
 <div class="container pt-4">
   <!-- Login page title -->
-  <div class="row">
+  <div class="row text-center">
     <h2 class="mb-0 text-center w-100">Login</h2>
-    <hr class="my-4 bg-primary w-50">
+    <hr class="mt-4 mb-2 bg-primary w-50">
+    <div class="w-100"></div>
+    <a routerLink="/register" class="d-block mx-auto mb-4">New user? Register!</a>
   </div>
   <div class="row">
     <div class="col-md-6 mx-auto">
@@ -12,12 +14,17 @@
           <label for="email">Email Address</label>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">
+              <span class="input-group-text">
                 <i class="fa fa-envelope text-primary"></i>
               </span>
             </div>
-            <input type="text" class="form-control" name="email" placeholder="Email" aria-label="Email"
-              aria-describedby="basic-addon1" [(ngModel)]="email">
+            <input 
+              type="text" 
+              class="form-control" 
+              name="email" 
+              placeholder="Email" 
+              aria-label="Email"
+              [(ngModel)]="email">
           </div>
         </div>
 
@@ -26,12 +33,17 @@
           <label for="password">Password</label>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">
+              <span class="input-group-text">
                 <i class="fa fa-lock text-primary"></i>
               </span>
             </div>
-            <input type="password" class="form-control" name="password" placeholder="Password" aria-label="Password"
-              aria-describedby="basic-addon1" [(ngModel)]="password">
+            <input 
+              type="password" 
+              class="form-control" 
+              name="password" 
+              placeholder="Password" 
+              aria-label="Password"
+              [(ngModel)]="password">
           </div>
         </div>
 

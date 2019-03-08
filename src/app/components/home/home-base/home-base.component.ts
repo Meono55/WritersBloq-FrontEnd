@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StoryService } from '../../../services/story.service';
 
 @Component({
   selector: 'app-home-base',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-base.component.scss']
 })
 export class HomeBaseComponent implements OnInit {
+  storyService: StoryService
 
-  constructor() { }
+  constructor(
+    private storys: StoryService
+  ) { }
 
   ngOnInit() {
+    this.storyService = this.storys
+  }
+
+  search() {
+    // TODO
   }
 
 }

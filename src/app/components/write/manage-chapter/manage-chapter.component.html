@@ -1,0 +1,47 @@
+<div class="container pt-4">
+
+  <!-- Title -->
+  <div class="row text-center">
+    <h2 class="mb-0 text-center w-100">{{storiesService.currentChapter ? storiesService.currentChapter.title : 'Loading'}}</h2>
+    <hr class="mt-4 mb-2 bg-primary w-50">
+  </div>
+
+  <!-- Edit Controls -->
+  <div class="row pt-3">
+    <div class="col text-center">
+      <button (click)="open(writeContent)" class="btn btn-primary ml-2">New Content</button>
+    </div>
+  </div>
+
+  <!-- Content List -->
+  <div class="row py-4">
+    <div *ngFor="let c of storiesService.currentChapter.content" class="col-md-8 mx-auto mb-3">
+      <div class="border rounded p-2">
+        <div class="lead -text-truncate mb-2" [innerHtml]="c.contentData.length > 200 ? c.contentData.slice(0,200) + '...' : c.contentData"></div>
+        <div class="w-100 text-center">
+          <button class="btn btn-sm btn-outline-primary" disabled>Edit Content</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <ng-template #writeContent let-modal>
+    <div class="modal-header border-light pb-2">
+      <h4 class="w-100 pl-4 text-center" id="modal-basic-title">Write Content</h4>
+      <button class="close" aria-label="Close" (click)="modal.dismiss()">
+        <i class="fa fa-times mt-1"></i>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <ckeditor [editor]="editor" [(ngModel)]="newContent.contentData"></ckeditor>
+
+      <button [class]="(loading ? 'disabled ' : '') + 'btn btn-primary btn-lg d-block w-50 mx-auto mt-3'" (click)="createContent()">
+        <div *ngIf="!loading; else spinner">Submit</div>
+        <ng-template #spinner><i class="fa fa-circle-notch fa-spin"></i></ng-template>
+      </button>
+    </div>
+  </ng-template>
+</div>
