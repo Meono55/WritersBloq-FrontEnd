@@ -27,6 +27,7 @@ import { ManageStoryComponent } from './components/write/manage-story/manage-sto
 import { ReadChapterComponent } from './components/read/read-chapter/read-chapter.component';
 import { ManageChapterComponent } from './components/write/manage-chapter/manage-chapter.component';
 import { WriteContentComponent } from './components/write/write-content/write-content.component';
+import { EditStoryComponent } from './components/write/edit-story/edit-story.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { WriteContentComponent } from './components/write/write-content/write-co
     ManageStoryComponent,
     ReadChapterComponent,
     ManageChapterComponent,
-    WriteContentComponent
+    WriteContentComponent,
+    EditStoryComponent
   ],
   imports: [
     BrowserModule,
