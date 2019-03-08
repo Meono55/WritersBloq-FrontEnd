@@ -35,7 +35,7 @@ export class StoryService {
     this.currentChapter = this.currentStory.chapters[index];
   }
 
-  
+  // Get methods
   getAllStories(page):Observable<Page>{
     return this.http.get(`${environment.p2ApiUrl}/stories?page=${page}`, {withCredentials: true})
   }
@@ -46,6 +46,7 @@ export class StoryService {
     return this.http.get(`${environment.p2ApiUrl}/stories?page=${page}&forUser=true`, {withCredentials: true})
   }
 
+  // Create methods
   createStory(story: Story): Observable<Story> {
     return this.http.post<Story>(`${environment.p2ApiUrl}/stories`, story, {withCredentials: true})
   }
@@ -57,6 +58,11 @@ export class StoryService {
   }
   createContent(chapterId: number, content: Content): Observable<Content> {
     return this.http.post<Content>(`${environment.p2ApiUrl}/chapters/${chapterId}/contents`, content, {withCredentials: true})
+  }
+
+  // Edit methods
+  editStory(story: Story): Observable<Story> {
+    return this.http.put<Story>(`${environment.p2ApiUrl}/stories`, story, {withCredentials: true})
   }
 
 }
