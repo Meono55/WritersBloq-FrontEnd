@@ -8,6 +8,7 @@ import Chapter from '../models/Chapter.model';
 import Content from '../models/Content.model';
 import Comment from '../models/Comment.model';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,6 +19,7 @@ export class StoryService {
   currentStoryPage: Page
   currentStory: Story
   currentChapter : Chapter
+
 
   constructor(
     private http: HttpClient
@@ -63,6 +65,21 @@ export class StoryService {
   // Edit methods
   editStory(story: Story): Observable<Story> {
     return this.http.put<Story>(`${environment.p2ApiUrl}/stories`, story, {withCredentials: true})
+  }
+
+  filterStories(page:number): Observable<Page>{
+    let url = `${environment.p2ApiUrl}/stories?page=${page}&` 
+    if(this.searchType==='Title'){
+      url += 'query=' + this.searchQuery
+    }
+    else if(this.searchType === 'Tag'){
+      url+= 'tag=' + this.searchQuery
+    }
+    else if(this.searchType === 'Genre'){
+      url+= 'genre=' + this.searchQuery
+    }
+    console.log(url)
+    return this.http.get(url,{withCredentials: true})
   }
 
 }

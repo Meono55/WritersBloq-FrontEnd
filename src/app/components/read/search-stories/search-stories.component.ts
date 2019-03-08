@@ -34,6 +34,16 @@ export class SearchStoriesComponent implements OnInit, OnDestroy {
       this.loading = false
     })
   }
+
+  filterStories(){
+    this.loading=true
+    this.storyService.filterStories(this.currentPage).subscribe((page) => {
+      this.storyService.currentStoryPage = page
+      this.loading = false
+      console.log(this.storyService.currentStoryPage)
+    })
+
+  }
   ngOnDestroy(){
     if(this.storiesSub) this.storiesSub.unsubscribe()
   }

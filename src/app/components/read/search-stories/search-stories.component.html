@@ -25,12 +25,12 @@
           <option>Thriller</option>
         </select>
         <ng-template #titleSearch>
-          <input type="text" name="search" class="form-control" [placeholder]="'Search by ' + storyService.searchType">
+          <input type="text" name="search" class="form-control" [placeholder]="'Search by ' + storyService.searchType" [(ngModel)]="storyService.searchQuery">
         </ng-template>
 
         <!-- Execute the search -->
         <div class="input-group-append">
-          <button class="btn btn-primary">
+          <button (click)="filterStories()" class="btn btn-primary">
             <i class="fa fa-search"></i>
           </button>
         </div>
